@@ -9,20 +9,20 @@ import riddlr.bckndlbrynth.repository.RiddleRepository;
 
 
 @RestController
-@RequestMapping("/RiddleOne")
-public class RiddleOneController extends RiddleCoreController {
+@RequestMapping("/RiddleTwo")
+public class RiddleTwoController extends RiddleCoreController {
 
     @Autowired
     private RiddleRepository riddleRepository;
-    private static final int PEHLI_PAHELI = 1;
+    private static final int SEGUNDO_ROMPECABEZAS = 2;
 
-    @GetMapping(value = "/getRiddle")
-    public String getRiddleOne() {
-        return RiddleParser.parseDirect(getRiddleById(PEHLI_PAHELI));
+    @GetMapping(value = "/getRiddle/{riddleKey}")
+    public String getRiddleTwo(@PathVariable("riddleKey") String riddleKey) {
+        return RiddleParser.parseDirect(getRiddleByKey(riddleKey));
     }
 
     @GetMapping(value = "/getNextRiddleKey/{answer}")
     public RiddleResponse getNextRiddleKey(@PathVariable("answer") String answer) {
-        return getRiddleResponse(PEHLI_PAHELI, answer);
+        return getRiddleResponse(SEGUNDO_ROMPECABEZAS, answer);
     }
 }
